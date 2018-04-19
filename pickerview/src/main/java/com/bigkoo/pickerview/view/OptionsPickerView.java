@@ -20,10 +20,9 @@ import java.util.List;
  */
 public class OptionsPickerView<T> extends BasePickerView implements View.OnClickListener {
 
-    private WheelOptions wheelOptions;
-
     private static final String TAG_SUBMIT = "submit";
     private static final String TAG_CANCEL = "cancel";
+    private WheelOptions<T> wheelOptions;
 
 
     public OptionsPickerView(PickerOptions pickerOptions) {
@@ -76,7 +75,7 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
         final LinearLayout optionsPicker = (LinearLayout) findViewById(R.id.optionspicker);
         optionsPicker.setBackgroundColor(mPickerOptions.bgColorWheel);
 
-        wheelOptions = new WheelOptions(optionsPicker, mPickerOptions.isRestoreItem);
+        wheelOptions = new WheelOptions<>(optionsPicker, mPickerOptions.isRestoreItem);
         if (mPickerOptions.optionsSelectChangeListener != null) {
             wheelOptions.setOptionsSelectChangeListener(mPickerOptions.optionsSelectChangeListener);
         }
@@ -161,8 +160,13 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
                            List<T> options2Items,
                            List<T> options3Items) {
 
-        wheelOptions.setLinkage(false);
         wheelOptions.setNPicker(options1Items, options2Items, options3Items);
+        reSetCurrentItems();
+    }
+
+    //区间选择情况下调用
+    public void setRPicker(List<T> optionsItems) {
+        wheelOptions.setRPicker(optionsItems);
         reSetCurrentItems();
     }
 
