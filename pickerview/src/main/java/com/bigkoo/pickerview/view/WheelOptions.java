@@ -232,6 +232,7 @@ public class WheelOptions<T> {
     // 区间选择
     public void setRPicker(List<T> optionsItems) {
         range = true;
+        linkage = false;
         // 选项1
         wv_option1.setAdapter(new ArrayWheelAdapter<>(optionsItems));// 设置显示数据
         wv_option1.setCurrentItem(0);// 初始化时显示的数据
