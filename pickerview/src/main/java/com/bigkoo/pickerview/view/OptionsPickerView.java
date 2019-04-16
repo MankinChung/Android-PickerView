@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bigkoo.pickerview.R;
 import com.bigkoo.pickerview.configure.PickerOptions;
+import com.bigkoo.pickerview.listener.OnOptionsSelectChangeListener;
 
 import java.util.List;
 
@@ -191,6 +192,14 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
         }
     }
 
+    /**
+     * @param listener 切换item项滚动停止时，实时回调监听。
+     * @return
+     */
+    public OptionsPickerView<T> setOptionsSelectChangeListener(OnOptionsSelectChangeListener listener) {
+        mPickerOptions.optionsSelectChangeListener = listener;
+        return this;
+    }
 
     @Override
     public boolean isDialog() {
