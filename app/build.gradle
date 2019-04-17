@@ -26,7 +26,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //implementation project(':pickerview')
-    //implementation 'com.mankinc:PickerView:4.1.7'
+    //implementation 'com.github.mankinchung:PickerView:4.1.7'
+    //implementation 'com.mankinc:PickerView:0.9.0'
     //implementation 'com.mankinc.PickerView:pickerview:4.1.7'
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'com.google.code.gson:gson:2.8.5'
