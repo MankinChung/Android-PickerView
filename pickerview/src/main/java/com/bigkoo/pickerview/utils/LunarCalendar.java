@@ -2,6 +2,7 @@ package com.bigkoo.pickerview.utils;
 
 import android.util.Log;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -266,6 +267,22 @@ public class LunarCalendar {
         lunarDate[3] = isLeap ? 1 : 0;
         //Log.i("----------->",year+"-"+month+"-"+monthDay+"====>"+lunarDate[0]+"-"+lunarDate[1]+"-"+lunarDate[2]+"-"+lunarDate[3]);
         return lunarDate;
+    }
+
+    public static String toLunar(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int[] lunar = solarToLunar(c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1, c.get(Calendar.DAY_OF_MONTH));
+        StringBuilder builder = new StringBuilder();
+        builder.append(lunar[0]);
+        builder.append('年');
+        if (lunar[3] == 1) {
+            builder.append('闰');
+        }
+        builder.append(ChinaDate.getChinaMonth(lunar[1]));
+        builder.append('月');
+        builder.append(ChinaDate.getChinaDate(lunar[2]));
+        return builder.toString();
     }
 
 

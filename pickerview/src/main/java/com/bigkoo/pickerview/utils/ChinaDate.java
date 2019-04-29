@@ -20,7 +20,7 @@ public class ChinaDate {
      * 注意:  从1月到12月对应的是第16位到第5位。
      * 17-20: 非闰年为0，大于0表示闰月月份，仅当存在闰月的情况下有意义。
      */
-    final private static long[] lunarInfo = new long[]{
+    private final static long[] lunarInfo = new long[]{
         0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2,//1900-1909
         0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977,//1910-1919
         0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970,//1920-1929
@@ -202,6 +202,10 @@ public class ChinaDate {
         nongDate[1] = i;
         nongDate[2] = offset + 1;
         return nongDate;
+    }
+
+    public static String getChinaMonth(int month){
+        return nStr1[month];
     }
 
     public final static String getChinaDate(int day) {
