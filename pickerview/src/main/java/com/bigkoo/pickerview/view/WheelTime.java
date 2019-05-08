@@ -97,11 +97,13 @@ public class WheelTime {
      * @param s
      */
     private void setLunar(int year, final int month, int day, boolean isLeap, int h, int m, int s) {
+        int startY = LunarCalendar.solarToLunar(startYear, startMonth, startDay)[0];
+        int endY = LunarCalendar.solarToLunar(endYear, endMonth, endDay)[0];
         // 年
         wv_year = (WheelView) view.findViewById(R.id.year);
-        wv_year.setAdapter(new ArrayWheelAdapter(ChinaDate.getYears(startYear, endYear)));// 设置"年"的显示数据
+        wv_year.setAdapter(new ArrayWheelAdapter(ChinaDate.getYears(startY, endY)));// 设置"年"的显示数据
         wv_year.setLabel("");// 添加文字
-        wv_year.setCurrentItem(year - startYear);// 初始化时显示的数据
+        wv_year.setCurrentItem(year - startY);// 初始化时显示的数据
         wv_year.setGravity(gravity);
 
         // 月

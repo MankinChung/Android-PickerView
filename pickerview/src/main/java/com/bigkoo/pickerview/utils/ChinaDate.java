@@ -314,7 +314,7 @@ public class ChinaDate {
 
     public static ArrayList<String> getYears(int startYear, int endYear) {
         ArrayList<String> years = new ArrayList<>();
-        for (int i = startYear; i < endYear; i++) {
+        for (int i = startYear; i <= endYear; i++) {
             years.add(String.format("%d年", i));
         }
         return years;

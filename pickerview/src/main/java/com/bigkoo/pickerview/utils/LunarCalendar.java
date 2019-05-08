@@ -285,6 +285,20 @@ public class LunarCalendar {
         return builder.toString();
     }
 
+    public static String toLunarMD(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int[] lunar = solarToLunar(c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1, c.get(Calendar.DAY_OF_MONTH));
+        StringBuilder builder = new StringBuilder();
+        if (lunar[3] == 1) {
+            builder.append('闰');
+        }
+        builder.append(ChinaDate.getChinaMonth(lunar[1]));
+        builder.append('月');
+        builder.append(ChinaDate.getChinaDate(lunar[2]));
+        return builder.toString();
+    }
+
 
     /**
      * 将公历日期转换为农历日期，且标识是否是闰月
